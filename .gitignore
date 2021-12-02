@@ -1,2 +1,5 @@
 *.class
 *.bin
+/.vs
+/bin/Debug
+/obj/x86/Debug
