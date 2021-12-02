@@ -2,4 +2,4 @@
 
 Merry Coding!
 
-[link](adventofcode.com)
+[link](https://adventofcode.com/)
