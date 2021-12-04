@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BA3EFF91-090B-4884-B7B9-A9707E5DCFA6}</ProjectGuid>
+    <ProjectGuid>{0C99F3BB-23AE-4D27-AF51-681E97384341}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>AdventOfCode</RootNamespace>
     <AssemblyName>AdventOfCode</AssemblyName>
@@ -44,13 +44,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Day02.cs" />
+    <Compile Include="Day04.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data01.txt" />
     <Content Include="Data02.txt" />
+    <Content Include="data03.txt" />
+    <Content Include="day01.java" />
+    <Content Include="day03.java" />
+    <Content Include="Test04.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data04.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
