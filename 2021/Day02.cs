@@ -39,9 +39,9 @@ namespace AdventOfCode
             return x * y;
         }
 
-        static void Main(string[] args)
-        {
-            Debug.WriteLine(ReadFile());
-        }
+        //static void Main(string[] args)
+        //{
+        //    Debug.WriteLine(ReadFile());
+        //}
     }
 }
