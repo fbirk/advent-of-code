@@ -100,9 +100,9 @@ namespace AdventOfCode
             return result;
         }
 
-        static void Main(string[] args)
-        {
-            Debug.WriteLine($"Part 2: {Part1("Data05.txt")}");
-        }
+        //static void Main(string[] args)
+        //{
+        //    Debug.WriteLine($"Part 2: {Part1("Data05.txt")}");
+        //}
     }
 }
