@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Day02.cs" />
     <Compile Include="Day04.cs" />
+    <Compile Include="Day05.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +55,9 @@
     <Content Include="data01.txt" />
     <Content Include="Data02.txt" />
     <Content Include="data03.txt" />
+    <Content Include="Data05.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="day01.java" />
     <Content Include="day03.java" />
     <Content Include="Test04.txt">
@@ -62,6 +66,10 @@
     <Content Include="Data04.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Test05.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

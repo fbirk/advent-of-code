@@ -238,10 +238,10 @@ namespace AdventOfCode
             return -1;
         }
 
-        static void Main(string[] args)
-        {
-            Debug.WriteLine($"Part 1: {Part1("Data04.txt")}");
-            Debug.WriteLine($"Part 2: {Part2("Data04.txt")}");
-        }
+       // static void Main(string[] args)
+       // {
+       //     Debug.WriteLine($"Part 1: {Part1("Data04.txt")}");
+       //     Debug.WriteLine($"Part 2: {Part2("Data04.txt")}");
+       // }
     }
 }
