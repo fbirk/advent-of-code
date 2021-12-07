@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode
 {
-    internal class Day04
+    public class Day04
     {
-        static int Part1(string filename)
+        public static int Part1(string filename)
         {
             var drawnNumbers = new List<int>();
             var matrixes = new List<List<List<Tuple<int, bool>>>>();
@@ -65,7 +63,7 @@ namespace AdventOfCode
             return 0;
         }
 
-        static int Part2(string filename)
+        public static int Part2(string filename)
         {
             var drawnNumbers = new List<int>();
             var matrixes = new List<List<List<Tuple<int, bool>>>>();
@@ -237,11 +235,5 @@ namespace AdventOfCode
 
             return -1;
         }
-
-       // static void Main(string[] args)
-       // {
-       //     Debug.WriteLine($"Part 1: {Part1("Data04.txt")}");
-       //     Debug.WriteLine($"Part 2: {Part2("Data04.txt")}");
-       // }
     }
 }

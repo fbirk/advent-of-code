@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 
 namespace AdventOfCode
 {
-    internal class Day05
+    public class Day05
     {
         static readonly int fieldsize = 1000;
 
-        static int Part1(string filename)
+        public static int Part1(string filename)
         {
             // init
             var matrix = new int[fieldsize][];
@@ -99,10 +98,5 @@ namespace AdventOfCode
             }
             return result;
         }
-
-        //static void Main(string[] args)
-        //{
-        //    Debug.WriteLine($"Part 2: {Part1("Data05.txt")}");
-        //}
     }
 }

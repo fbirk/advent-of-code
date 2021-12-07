@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
-
+﻿
 namespace AdventOfCode
 {
-    class Day02
+    public class Day02
     {
-        static int ReadFile()
+        public static int Part2()
         {
             int x = 0;
             int y = 0;
@@ -38,10 +37,5 @@ namespace AdventOfCode
 
             return x * y;
         }
-
-        //static void Main(string[] args)
-        //{
-        //    Debug.WriteLine(ReadFile());
-        //}
     }
 }

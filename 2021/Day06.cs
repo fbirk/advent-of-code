@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode
 {
-    internal class Day06
+    public class Day06
     {
-        static int Part1(string filename, int cycles)
+        public static int Part1(string filename, int cycles)
         {
             var elements = new List<int>();
             var lines = System.IO.File.ReadAllLines(filename);
@@ -25,7 +23,7 @@ namespace AdventOfCode
             return values.Count;
         }
 
-        static double Part2(string filename, int cycles)
+        public static double Part2(string filename, int cycles)
         {
             var register = new double[] { 0, 0, 0, 0, 0, 0, 0, 0, 0};
             var lines = System.IO.File.ReadAllLines(filename);
@@ -81,12 +79,6 @@ namespace AdventOfCode
                 }
             }
             return temp;
-        }
-
-        static void Main(string[] args)
-        {
-            Debug.WriteLine($"Part 1: {Part1("Data06.txt", 80)}");
-            Debug.WriteLine($"Part 2: {Part2("Data06.txt", 256)}");
         }
     }
 }
