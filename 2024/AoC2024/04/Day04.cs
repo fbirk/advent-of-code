@@ -1,4 +1,5 @@
-﻿namespace AoC2024._04
+﻿
+namespace AoC2024._04
 {
     public class Day04
     {
@@ -19,6 +20,47 @@
             result += GetDiagonalFindings(matrix);
 
             return result;
+        }
+
+        public static int Part2()
+        {
+            var result = 0;
+
+            var lines = File.ReadAllLines(@"04\data04.txt");
+            var matrix = new char[lines.Length][];
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                matrix[i] = line.ToCharArray();
+            }
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                for (int j = 0; j < matrix[i].Length; j++)
+                {
+                    if (matrix[i][j] == 'A')
+                    {
+                        result += CheckForValidMAS(i, j, lines.Length, matrix[i].Length, matrix);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private static int CheckForValidMAS(int i, int j, int iLenght, int jLenght, char[][] matrix)
+        {
+            if (i < 1 || i > iLenght - 2) { return 0; }
+            if (j < 1 || j > iLenght - 2) { return 0; }
+
+            if (CheckForMAS(matrix[i - 1][j - 1], matrix[i][j], matrix[i + 1][j + 1]) &&
+                CheckForMAS(matrix[i - 1][j + 1], matrix[i][j], matrix[i + 1][j - 1]))
+            {
+                return 1;
+            }
+
+            return 0;
         }
 
         private static int GetDiagonalFindings(char[][] matrix)
@@ -164,6 +206,12 @@
         private static bool CheckForXMAS(char one, char two, char three, char four)
         {
             return one == 'X' && two == 'M' && three == 'A' && four == 'S';
+        }
+
+        private static bool CheckForMAS(char one, char two, char three)
+        {
+            return (one == 'M' && two == 'A' && three == 'S') ||
+                (one == 'S' && two == 'A' && three == 'M');
         }
     }
 }
