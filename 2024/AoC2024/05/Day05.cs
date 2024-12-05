@@ -44,7 +44,7 @@ namespace AoC2024._05
         public static int Part2()
         {
             var result = 0;
-            var lines = File.ReadAllLines(@"05\test05.txt");
+            var lines = File.ReadAllLines(@"05\data05.txt");
             var isRules = true;
 
             var rules = new List<(int first, int second)>();
@@ -78,9 +78,35 @@ namespace AoC2024._05
             return result;
         }
 
-        private static int CorrectInvalidUpdatesAndGetResult(ConcurrentDictionary<int, List<int>> rulesLookup, List<int[]> indicesOfInvalidUpdates)
+        private static int CorrectInvalidUpdatesAndGetResult(ConcurrentDictionary<int, List<int>> rulesLookup, List<int[]> invalidUpdates)
         {
-            throw new NotImplementedException();
+            var validUpdates = 0;
+
+            foreach (var update in invalidUpdates)
+            {
+                for (int i = 0; i < update.Length; i++)
+                {
+                    var index = IsCurrentPageValid(rulesLookup, update[i], update, i - 1);
+                    if (index > -1)
+                    {
+                        // Repair
+                        (update[i], update[index]) = (update[index], update[i]);
+
+                        // Start from Beginning
+                        i = 0;
+                        continue;
+                    }
+
+                    if (i == update.Length - 1)
+                    {
+                        var mid = GetMiddleValue(update);
+                        //Console.WriteLine(mid);
+                        validUpdates += mid;
+                    }
+                }
+            }
+
+            return validUpdates;
         }
 
         private static (int sumOfValidUpdates, List<int[]> invalidUpdates) ValidateUpdates(ConcurrentDictionary<int, List<int>> rulesLookup, List<int[]> updates)
@@ -92,7 +118,7 @@ namespace AoC2024._05
             {
                 for (int i = 0; i < update.Length; i++)
                 {
-                    if (!IsCurrentPageValid(rulesLookup, update[i], update, i - 1))
+                    if (IsCurrentPageValid(rulesLookup, update[i], update, i - 1) > -1)
                     {
                         invalidUpdateIndices.Add(update);
                         break;
@@ -110,7 +136,7 @@ namespace AoC2024._05
             return (validUpdates, invalidUpdateIndices);
         }
 
-        private static bool IsCurrentPageValid(ConcurrentDictionary<int, List<int>> rulesLookup, int key, int[] update, int i)
+        private static int IsCurrentPageValid(ConcurrentDictionary<int, List<int>> rulesLookup, int key, int[] update, int i)
         {
             for (int j = i; j >= 0; j--)
             {
@@ -118,16 +144,16 @@ namespace AoC2024._05
                 {
                     if (value.Contains(update[j]))
                     {
-                        return false;
+                        return j;
                     }
                 }
                 else
                 {
-                    return true;
+                    return -1;
                 }
             }
 
-            return true;
+            return -1;
         }
 
         private static int GetMiddleValue(int[] values)
