@@ -14,3 +14,4 @@
 /2021/.vs/AdventOfCode
 /2024/AoC2024/bin/Debug/net8.0
 /2024/AoC2024/obj
+*.txt
