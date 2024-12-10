@@ -37,10 +37,38 @@ namespace AoC2024._10
             return result;
         }
 
-        private static int MakeAStep(int[][] matrix, int i, int j, int previous, int depth, List<(int, int)> trailheads)
+        public static long Part2()
         {
+            long result = 0;
+            var lines = File.ReadAllLines(@"10\data10.txt");
+            var matrix = new int[lines.Length][];
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                matrix[i] = line.ToArray().Select(x => int.Parse(x.ToString())).ToArray();
+            }
 
 
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix[i].Length; j++)
+                {
+                    if (matrix[i][j] == 0)
+                    {
+                        var trailheads = new List<(int, int)>();
+                        var score = MakeAStep(matrix, i, j, -1, 0, trailheads, true);
+                        result += score;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
+        private static int MakeAStep(int[][] matrix, int i, int j, int previous, int depth, List<(int, int)> trailheads, bool ignore = false)
+        {
             if (i < 0
                 || j < 0
                 || i >= matrix.Length
@@ -57,17 +85,20 @@ namespace AoC2024._10
 
             if (matrix[i][j] == 9 && depth == 9 && !trailheads.Contains((i, j)))
             {
-                trailheads.Add((i, j));
+                if (!ignore)
+                {
+                    trailheads.Add((i, j));
+                }
                 return 1;
             }
 
             var prev = matrix[i][j];
             var nextDepth = depth + 1;
             return 0
-                + MakeAStep(matrix, i - 1, j, prev, nextDepth, trailheads)
-                + MakeAStep(matrix, i + 1, j, prev, nextDepth, trailheads)
-                + MakeAStep(matrix, i, j - 1, prev, nextDepth, trailheads)
-                + MakeAStep(matrix, i, j + 1, prev, nextDepth, trailheads);
+                + MakeAStep(matrix, i - 1, j, prev, nextDepth, trailheads, ignore)
+                + MakeAStep(matrix, i + 1, j, prev, nextDepth, trailheads, ignore)
+                + MakeAStep(matrix, i, j - 1, prev, nextDepth, trailheads, ignore)
+                + MakeAStep(matrix, i, j + 1, prev, nextDepth, trailheads, ignore);
         }
     }
 }
